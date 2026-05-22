@@ -1,12 +1,12 @@
 import createFetchClient from '../hooks/useFetch';
 import { AsteroidDetails, AsteroidsResponse, ChartResponse } from '../models/Asteroid';
 
-// Initialize the configured fetch client
+// API client instance
 const fetchClient = createFetchClient();
 
 export const nasaService = {
     /**
-     * Retrieves the paginated and filtered list of asteroids.
+     * Fetch list of near-earth objects matching filters.
      */
     getAsteroids: async (
         startDate: string,
@@ -34,7 +34,7 @@ export const nasaService = {
     },
 
     /**
-     * Retrieves the flattened data strictly mapped for Recharts.
+     * Fetch formatted charting metrics.
      */
     getAsteroidsChartData: async (
         startDate: string,
@@ -55,7 +55,7 @@ export const nasaService = {
     },
 
     /**
-     * Retrieves specific details for a single asteroid.
+     * Fetch detailed lookup profile by asteroid ID.
      */
     getAsteroidDetails: async (asteroidId: string): Promise<AsteroidDetails> => {
         try {

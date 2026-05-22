@@ -1,4 +1,4 @@
-// Interface for the processed data object we appended in the backend
+// Backend-calculated approach and dimension fields
 export interface ProcessedAsteroidData {
     close_approach_date: string;
     miss_distance_km: number;
@@ -67,7 +67,7 @@ export interface OrbitalData {
     };
 }
 
-// Interface representing a single asteroid record from the /asteroids endpoint
+// Combined asteroid schema returned by list endpoint
 export interface Asteroid {
     id: string;
     name: string;
@@ -79,7 +79,7 @@ export interface Asteroid {
     estimated_diameter?: EstimatedDiameter;
     close_approach_data?: CloseApproachData[];
     orbital_data?: OrbitalData;
-    // We only type the fields we actually need to render to avoid massive boilerplate
+    // Standard subset of JPL NeoWs response attributes
     _processed: ProcessedAsteroidData;
 }
 
@@ -87,14 +87,14 @@ export type AsteroidDetails = Omit<Asteroid, "_processed"> & {
     _processed?: ProcessedAsteroidData;
 };
 
-// Interface for the paginated/filtered list response
+// GET /api/asteroids response schema
 export interface AsteroidsResponse {
     count: number;
     results: Asteroid[];
     upstream_errors: string[];
 }
 
-// Interface for the specific data points requested by the /asteroids/charts endpoint
+// Recharts scatter/bar data metrics representation
 export interface ChartDataPoint {
     date: string;
     name: string;
@@ -103,7 +103,7 @@ export interface ChartDataPoint {
     is_hazardous: boolean;
 }
 
-// Interface for the chart endpoint response
+// GET /api/asteroids/charts response schema
 export interface ChartResponse {
     chart_data: ChartDataPoint[];
 }

@@ -13,7 +13,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS to allow the Vite frontend to communicate with this backend
+# CORS configuration for Vite frontend integration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -22,13 +22,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register the routes
+# API route registration
 app.include_router(api_router, prefix="/api")
 
 
 @app.get("/health")
 def health_check():
     """
-    Simple health check endpoint useful for deployment platforms.
+    Verify application operational status.
     """
     return {"status": "ok", "service": settings.PROJECT_NAME}

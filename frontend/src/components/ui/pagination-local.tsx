@@ -32,7 +32,7 @@ export function PaginationLocal({
                     value={String(pageSize)}
                     onValueChange={(val) => {
                         onPageSizeChange(Number(val));
-                        // reset to page 1 to avoid out-of-bounds
+                        // Reset page offset to prevent out-of-bounds errors
                         onPageChange(1);
                     }}
                 >

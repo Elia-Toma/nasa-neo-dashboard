@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
-import './utils/i18n'; // Imports the i18n configuration.
+import './utils/i18n'; // Initialize i18n configuration
 
 const container = document.getElementById('root');
 if (!container) {

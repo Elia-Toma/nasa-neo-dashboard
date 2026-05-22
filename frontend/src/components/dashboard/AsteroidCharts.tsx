@@ -51,11 +51,11 @@ export const AsteroidCharts: React.FC<AsteroidChartsProps> = ({ data, isLoading 
         );
     }
 
-    // Chart 1 processing: Split into safe and hazardous datasets
+    // Split raw data into safe and hazardous datasets
     const safeData = data.filter((d) => !d.is_hazardous);
     const hazardousData = data.filter((d) => d.is_hazardous);
 
-    // Chart 2 processing: Size distribution bins
+    // Aggregate size values into histogram bins
     const sizeBins = {
         small: 0,
         medium: 0,
@@ -82,7 +82,7 @@ export const AsteroidCharts: React.FC<AsteroidChartsProps> = ({ data, isLoading 
         { name: t('dashboard.charts.size_bin_giant'), count: sizeBins.giant }
     ];
 
-    // Tooltip custom layout for Scatter chart
+    // Custom component to format hover state metadata
     const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: Array<{ payload: ChartDataPoint }> }) => {
         if (active && payload && payload.length) {
             const item = payload[0].payload as ChartDataPoint;
@@ -114,7 +114,7 @@ export const AsteroidCharts: React.FC<AsteroidChartsProps> = ({ data, isLoading 
 
     return (
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {/* Chart 1: Close Approach Distance (Scatter Plot) */}
+            {/* Close approach distance scatter plot */}
             <Card className="mission-card">
                 <CardHeader>
                     <div className="flex items-center justify-between gap-3">
@@ -167,7 +167,7 @@ export const AsteroidCharts: React.FC<AsteroidChartsProps> = ({ data, isLoading 
                 </CardContent>
             </Card>
 
-            {/* Chart 2: Size Distribution (Histogram) */}
+            {/* Size distribution histogram */}
             <Card className="mission-card">
                 <CardHeader>
                     <div className="flex items-center justify-between gap-3">

@@ -1,8 +1,7 @@
 import diskcache as dc
 from app.core.config import settings
 
-# Initialize the persistent cache using SQLite under the hood.
-# This prevents exhausting NASA API limits across server restarts.
+# Persistent SQLite disk cache to survive application restarts
 neo_cache = dc.Cache(settings.CACHE_DIR)
 
 

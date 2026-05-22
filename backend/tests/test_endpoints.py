@@ -12,7 +12,7 @@ def test_health_check():
     assert response.json()["status"] == "ok"
 
 def test_validate_dates_range_too_long():
-    # 92 days duration (max is 90)
+    # Assert range validation blocks spans exceeding 90 days
     response = client.get("/api/asteroids?start_date=2026-05-01&end_date=2026-08-01")
     assert response.status_code == 400
     assert "Date range too long" in response.json()["detail"]
@@ -29,7 +29,7 @@ def test_validate_dates_start_after_end():
 
 @pytest.mark.asyncio
 async def test_endpoints_upstream_rate_limited(mocker):
-    # Mock nasa_client's async feed method to return rate limited state
+    # Mock NASA client to return a rate-limited state
     mock_feed = mocker.patch.object(
         nasa_client, "get_asteroids_feed", new_callable=AsyncMock
     )
@@ -40,12 +40,11 @@ async def test_endpoints_upstream_rate_limited(mocker):
         "rate_limited": True
     }
 
-    # Test main asteroids feed endpoint
+    # Assert endpoints return HTTP 429
     response = client.get("/api/asteroids?start_date=2026-05-01&end_date=2026-05-05")
     assert response.status_code == 429
     assert response.json()["detail"] == "NASA API rate limit exceeded."
 
-    # Test charts endpoint
     response_chart = client.get("/api/asteroids/charts?start_date=2026-05-01&end_date=2026-05-05")
     assert response_chart.status_code == 429
     assert response_chart.json()["detail"] == "NASA API rate limit exceeded."
@@ -79,17 +78,16 @@ async def test_asteroids_endpoint_success(mocker):
     )
     mock_feed.return_value = mock_feed_data
 
-    # Test general get with sorting by distance
+    # Assert results are sorted by close approach proximity
     response = client.get("/api/asteroids?start_date=2026-05-01&end_date=2026-05-01&sort_by=distance")
     assert response.status_code == 200
     data = response.json()
     assert data["count"] == 2
     assert len(data["results"]) == 2
-    # Asteroid Big distance is 15M km, Asteroid Small is 50M km. With distance sort (ascending), Big comes first.
     assert data["results"][0]["name"] == "Asteroid Big"
     assert data["results"][1]["name"] == "Asteroid Small"
 
-    # Test hazardous_only filtering
+    # Assert filter returns only hazardous objects
     response_haz = client.get("/api/asteroids?start_date=2026-05-01&end_date=2026-05-01&hazardous_only=true")
     assert response_haz.status_code == 200
     data_haz = response_haz.json()

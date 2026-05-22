@@ -1,19 +1,19 @@
 export const createFetchClient = () => {
-    // We assume the Vite env variable is set, otherwise fallback to local backend
+    // Resolve API base URL from env with localhost fallback
     const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
 
     const originalRequest = async (url: string, config: RequestInit) => {
         try {
             const response = await fetch(url, config);
 
-            // Handle HTTP errors (e.g., 400, 404, 502) before attempting to parse JSON
+            // Throw Error on non-2xx HTTP status responses
             if (!response.ok) {
                 let errorDetail = 'API request failed';
                 try {
                     const errorData = await response.json();
                     errorDetail = errorData.detail || errorDetail;
                 } catch {
-                    // Fallback if response is not JSON
+                    // Fallback to status text description if response is not JSON
                     errorDetail = response.statusText;
                 }
                 throw new Error(`Error ${response.status}: ${errorDetail}`);
@@ -29,7 +29,7 @@ export const createFetchClient = () => {
     };
 
     const callFetch = async (endpoint: string, options: RequestInit = {}) => {
-        // Construct full URL if a relative path is passed
+        // Resolve relative paths against base URL
         const url = endpoint.startsWith('http') ? endpoint : `${baseUrl}${endpoint}`;
 
         const config: RequestInit = {

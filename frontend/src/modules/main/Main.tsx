@@ -4,7 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 const Main = () => {
     const location = useLocation();
 
-    // Scroll the viewport after a page transition.
+    // Reset scroll positions on route change
     useLayoutEffect(() => {
         window.scrollTo({ top: 0, left: 0, behavior: "auto" });
         document.getElementById("root")?.scrollTo({ top: 0, left: 0, behavior: "auto" });

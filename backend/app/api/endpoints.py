@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def validate_dates(start_date: str, end_date: str):
     """
-    Validates that dates are in the correct format, start is before end, and range doesn't exceed 90 days.
+    Validate ISO date formats, range order, and 90-day span constraint.
     """
     try:
         start = datetime.strptime(start_date, "%Y-%m-%d")
@@ -26,7 +26,7 @@ def validate_dates(start_date: str, end_date: str):
 
 def check_upstream_errors(data: dict):
     """
-    Checks if the response indicates a rate limit or complete failure from the NASA API.
+    Check for rate limiting or gateway failure flags in response payload.
     """
     if data.get("rate_limited"):
         raise HTTPException(status_code=429, detail="NASA API rate limit exceeded.")
@@ -52,13 +52,13 @@ async def get_asteroids(
 
     flattened_asteroids = []
 
-    # Flatten the NASA nested dictionary structure
+    # Flatten daily feeds into a 1D array of asteroid records
     for date_key, asteroids in data.get("near_earth_objects", {}).items():
         for ast in asteroids:
             if hazardous_only and not ast.get("is_potentially_hazardous_asteroid"):
                 continue
 
-            # Safely extract sorting criteria
+            # Extract distance and diameter metrics. Fallback to inf/0.0 on parse failure.
             try:
                 distance = float(ast["close_approach_data"][0]["miss_distance"]["kilometers"])
             except (KeyError, IndexError, ValueError):
@@ -76,7 +76,7 @@ async def get_asteroids(
             }
             flattened_asteroids.append(ast)
 
-    # Apply sorting
+    # Sort results according to the requested sort parameter
     if sort_by == "distance":
         flattened_asteroids.sort(key=lambda x: x["_processed"]["miss_distance_km"])
     elif sort_by == "size":
@@ -97,7 +97,7 @@ async def get_asteroids_chart_data(
     end_date: str = Query(..., description="End date in YYYY-MM-DD format")
 ):
     """
-    Dedicated endpoint that maps NASA payload directly into Recharts friendly format.
+    Format asteroid data for Recharts visualization.
     """
     validate_dates(start_date, end_date)
     data = await nasa_client.get_asteroids_feed(start_date, end_date)
@@ -127,7 +127,7 @@ async def get_asteroids_chart_data(
 @router.get("/asteroids/{asteroid_id}")
 async def get_asteroid(asteroid_id: str):
     """
-    Fetch details for a single asteroid by its ID.
+    Fetch raw metadata for a specific asteroid from cache or upstream.
     """
     try:
         data = await nasa_client.get_asteroid_details(asteroid_id)
