@@ -1,0 +1,157 @@
+{
+    "dashboard": {
+        "title": "NASA NEO Dashboard",
+        "subtitle": "Monitoraggio in tempo reale degli oggetti vicini alla Terra",
+        "subtitle_desc": "con filtri, grafici e dettaglio per ogni oggetto vicino alla Terra.",
+        "badges": {
+            "api_error": "Errore API",
+            "updating_data": "Aggiornamento dati",
+            "data_synced": "Dati sincronizzati",
+            "nasa_api": "NASA NeoWs"
+        },
+        "hero": {
+            "eyebrow": "Controllo missione / Sorveglianza NEO",
+            "copy": "Il sistema di monitoraggio degli asteroidi utilizza l'API NASA NeoWS per tracciare gli oggetti vicini alla Terra. Se un asteroide attraversa l'orbita terrestre, è considerato un asteroide potenzialmente pericoloso che rappresenta una minaccia per il nostro pianeta."
+        },
+        "stats": {
+            "total_objects": "Oggetti Totali",
+            "asteroids": "Asteroidi",
+            "filtered_results": "Risultati filtrati",
+            "hazardous_objects": "Oggetti Pericolosi",
+            "potentially_hazardous": "Potenzialmente pericolosi",
+            "of_range": "del range",
+            "closest_approach": "Distanza Minima",
+            "closest_pass": "Passaggio piu vicino",
+            "largest_diameter": "Diametro Massimo",
+            "max_diameter": "Diametro massimo",
+            "none": "Nessun oggetto"
+        },
+        "filters": {
+            "title": "Filtri di esplorazione",
+            "desc": "",
+            "start_date": "Data Inizio",
+            "end_date": "Data Fine",
+            "sort_by": "Ordina per",
+            "hazardous": "Solo oggetti pericolosi",
+            "risk": "Rischio",
+            "all": "Tutti",
+            "only_hazardous": "Solo pericolosi",
+            "only_safe": "Solo nominali",
+            "refresh": "Aggiorna",
+            "sort_options": {
+                "date": "Data",
+                "size": "Dimensione (Grande-Piccolo)",
+                "distance": "Distanza (Piu' vicino)"
+            }
+        },
+        "tabs": {
+            "overview": "Overview",
+            "data": "Dati"
+        },
+        "monitor": {
+            "eyebrow": "Feed monitor primario",
+            "title": "Tracciamento asteroidi",
+            "tracking_id": "ID tracking",
+            "hazardous": "Pericoloso",
+            "nominal": "Nominale",
+            "approach": "Finestra di approccio",
+            "absolute_magnitude": "Magn. assoluta",
+            "estimated_range": "Range stimato",
+            "orbiting_body": "Corpo orbitato",
+            "countdown": "Countdown",
+            "past_pass": "Passato",
+            "days": "Giorni",
+            "hours": "Ore",
+            "minutes": "Minuti",
+            "seconds": "Secondi",
+            "approximate": "Stima",
+            "asteroid_visual": "Visualizzazione low-poly dell'asteroide",
+            "catalog_hint": "Il feed monitor mostra i principali oggetti ordinati; il catalogo sotto mantiene tutti i risultati paginati."
+        },
+        "analytics": {
+            "eyebrow": "Analytics secondarie",
+            "title": "Telemetria distanza e diametro"
+        },
+        "catalog": {
+            "eyebrow": "Catalogo",
+            "title": "Registro oggetti paginato"
+        },
+        "table": {
+            "catalog": "Catalogo asteroidi",
+            "catalog_desc": "",
+            "results": "risultati",
+            "name": "Nome",
+            "approach_date": "Data",
+            "distance": "Distanza",
+            "max_size": "Diametro",
+            "velocity": "Velocita",
+            "hazardous": "Rischio",
+            "actions": "Azione",
+            "yes": "Si",
+            "no": "No",
+            "safe": "Nominale",
+            "details": "Dettaglio",
+            "open_detail": "Apri dettaglio",
+            "empty": "Nessun asteroide trovato",
+            "empty_desc": "Prova un intervallo piu ampio o rimuovi i filtri.",
+            "loading": "Caricamento dati asteroidi in corso..."
+        },
+        "charts": {
+            "distance_title": "Distanza di avvicinamento",
+            "distance_desc": "Distanza di avvicinamento dei singoli oggetti nel tempo. Il colore indica il livello di rischio.",
+            "size_title": "Distribuzione delle dimensioni",
+            "size_desc": "Numero di oggetti raggruppati per diametro massimo stimato.",
+            "distance_series": "Distanza",
+            "size_series": "Numero asteroidi",
+            "points": "punti",
+            "loading": "Elaborazione grafici in corso...",
+            "empty": "Nessun dato disponibile per i grafici",
+            "empty_desc": "Modifica filtri o intervallo date.",
+            "size_bin_small": "Piccolo (< 100m)",
+            "size_bin_medium": "Medio (100-500m)",
+            "size_bin_large": "Grande (500m-1km)",
+            "size_bin_giant": "Gigante (> 1km)"
+        },
+        "details": {
+            "back": "Torna alla dashboard",
+            "hero_eyebrow": "Profilo oggetto",
+            "physical_properties": "Proprieta' Fisiche",
+            "orbit_links": "Orbita e Collegamenti",
+            "designation": "Designazione",
+            "abs_mag": "magnitudine assoluta",
+            "hazardous": "Potenzialmente pericoloso",
+            "non_hazardous": "Non pericoloso",
+            "sentry_object": "Oggetto Sentry",
+            "jpl_link": "Apri JPL",
+            "first_approach": "Primo approccio",
+            "rel_velocity": "Velocita relativa",
+            "historical": "Close approach storici",
+            "historical_desc": "",
+            "no_historical": "Nessun close approach disponibile.",
+            "orbit_data": "Dati orbitali",
+            "orbit_desc": "Parametri sintetici del corpo celeste.",
+            "orbiting_body": "Corpo orbitato",
+            "no_orbit": "Nessun orbital data disponibile.",
+            "orbit_class": "Classe orbitale",
+            "orbit_class_desc": "Descrizione non disponibile",
+            "loading": "Caricamento dettagli asteroide in corso...",
+            "not_avail": "Dettaglio non disponibile",
+            "not_found_card": "Nessun dettaglio trovato."
+        },
+        "errors": {
+            "fetch_failed": "Si e' verificato un errore imprevisto nel recupero dei dati degli asteroidi.",
+            "invalid_date_range": "Range date non valido",
+            "invalid_date_desc": "La data di inizio deve essere precedente o uguale alla data di fine.",
+            "cannot_load": "Impossibile caricare i dati",
+            "range_too_long": "Range date troppo lungo. Il massimo consentito è 90 giorni.",
+            "rate_limit_exceeded": "Limite di richieste dell'API di NASA raggiunto. Riprova più tardi."
+        },
+        "pagination": {
+            "prev": "Precedente",
+            "next": "Successivo",
+            "page_of": "Pagina {{current}} di {{total}}",
+            "rows_per_page": "Elementi per pagina",
+            "search": "Cerca"
+        }
+    }
+}

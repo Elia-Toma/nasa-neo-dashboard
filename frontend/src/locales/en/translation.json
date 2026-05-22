@@ -1,0 +1,157 @@
+{
+    "dashboard": {
+        "title": "NASA NEO Dashboard",
+        "subtitle": "Real-time monitoring of Near-Earth Objects",
+        "subtitle_desc": "with filters, charts and detail for every near-earth object.",
+        "badges": {
+            "api_error": "API Error",
+            "updating_data": "Updating data",
+            "data_synced": "Data synced",
+            "nasa_api": "NASA NeoWs"
+        },
+        "hero": {
+            "eyebrow": "Mission control / Near-Earth watch",
+            "copy": "The asteroid monitoring system uses the NASA NeoWS API to track near-Earth objects. If an asteroid crosses Earth's orbit, it is considered a potentially hazardous asteroid that poses a threat to our planet."
+        },
+        "stats": {
+            "total_objects": "Total Objects",
+            "asteroids": "Asteroids",
+            "filtered_results": "Filtered results",
+            "hazardous_objects": "Hazardous Objects",
+            "potentially_hazardous": "Potentially hazardous",
+            "of_range": "of range",
+            "closest_approach": "Closest Approach",
+            "closest_pass": "Closest pass",
+            "largest_diameter": "Max Diameter",
+            "max_diameter": "Max diameter",
+            "none": "None"
+        },
+        "filters": {
+            "title": "Exploration filters",
+            "desc": "",
+            "start_date": "Start Date",
+            "end_date": "End Date",
+            "sort_by": "Sort by",
+            "hazardous": "Hazardous only",
+            "risk": "Risk",
+            "all": "All",
+            "only_hazardous": "Hazardous only",
+            "only_safe": "Nominal only",
+            "refresh": "Refresh",
+            "sort_options": {
+                "date": "Date",
+                "size": "Size (Largest first)",
+                "distance": "Distance (Closest first)"
+            }
+        },
+        "tabs": {
+            "overview": "Overview",
+            "data": "Data"
+        },
+        "monitor": {
+            "eyebrow": "Primary monitor feed",
+            "title": "Asteroid tracking feed",
+            "tracking_id": "Tracking ID",
+            "hazardous": "Hazardous",
+            "nominal": "Nominal",
+            "approach": "Approach window",
+            "absolute_magnitude": "Abs. magnitude",
+            "estimated_range": "Estimated range",
+            "orbiting_body": "Orbiting body",
+            "countdown": "Countdown",
+            "past_pass": "Passed",
+            "days": "Days",
+            "hours": "Hours",
+            "minutes": "Minutes",
+            "seconds": "Seconds",
+            "approximate": "Approx.",
+            "asteroid_visual": "Low-poly asteroid visualization",
+            "catalog_hint": "The monitor feed shows the leading sorted objects; the catalog below keeps the full paginated result set."
+        },
+        "analytics": {
+            "eyebrow": "Secondary analytics",
+            "title": "Distance and diameter telemetry"
+        },
+        "catalog": {
+            "eyebrow": "Catalog",
+            "title": "Paginated object registry"
+        },
+        "table": {
+            "catalog": "Asteroid catalog",
+            "catalog_desc": "",
+            "results": "results",
+            "name": "Name",
+            "approach_date": "Date",
+            "distance": "Distance",
+            "max_size": "Diameter",
+            "velocity": "Velocity",
+            "hazardous": "Risk",
+            "actions": "Action",
+            "yes": "Yes",
+            "no": "No",
+            "safe": "Nominal",
+            "details": "Details",
+            "open_detail": "Open details",
+            "empty": "No asteroids found",
+            "empty_desc": "Try a wider range or remove filters.",
+            "loading": "Loading asteroid data..."
+        },
+        "charts": {
+            "distance_title": "Approach distance",
+            "distance_desc": "Close approach distance of individual objects over time. Color indicates risk level.",
+            "size_title": "Size distribution",
+            "size_desc": "Number of objects grouped by estimated maximum diameter.",
+            "distance_series": "Distance",
+            "size_series": "Asteroids count",
+            "points": "points",
+            "loading": "Rendering charts...",
+            "empty": "No data available for charts",
+            "empty_desc": "Modify filters or date range.",
+            "size_bin_small": "Small (< 100m)",
+            "size_bin_medium": "Medium (100-500m)",
+            "size_bin_large": "Large (500m-1km)",
+            "size_bin_giant": "Giant (> 1km)"
+        },
+        "details": {
+            "back": "Back to dashboard",
+            "hero_eyebrow": "Object profile",
+            "physical_properties": "Physical Properties",
+            "orbit_links": "Orbit & Links",
+            "designation": "Designation",
+            "abs_mag": "absolute magnitude",
+            "hazardous": "Potentially hazardous",
+            "non_hazardous": "Non-hazardous",
+            "sentry_object": "Sentry object",
+            "jpl_link": "Open JPL",
+            "first_approach": "First approach",
+            "rel_velocity": "Relative velocity",
+            "historical": "Historical close approaches",
+            "historical_desc": "",
+            "no_historical": "No close approach available.",
+            "orbit_data": "Orbital data",
+            "orbit_desc": "Synthetic parameters of the celestial body.",
+            "orbiting_body": "Orbiting body",
+            "no_orbit": "No orbital data available.",
+            "orbit_class": "Orbit class",
+            "orbit_class_desc": "Description not available",
+            "loading": "Loading asteroid details...",
+            "not_avail": "Details not available",
+            "not_found_card": "No details found."
+        },
+        "errors": {
+            "fetch_failed": "An unexpected error occurred while fetching asteroid data.",
+            "invalid_date_range": "Invalid date range",
+            "invalid_date_desc": "Start date must be before or equal to end date.",
+            "cannot_load": "Unable to load data",
+            "range_too_long": "Date range too long. Maximum allowed is 90 days.",
+            "rate_limit_exceeded": "NASA API rate limit reached. Please try again later."
+        },
+        "pagination": {
+            "prev": "Previous",
+            "next": "Next",
+            "page_of": "Page {{current}} of {{total}}",
+            "rows_per_page": "Rows per page",
+            "search": "Search"
+        }
+    }
+}
