@@ -37,6 +37,9 @@ nasa-neo-dashboard/
 
 ## FastAPI Endpoints
 
+The production API documentation is fully accessible online via Swagger UI at:
+**[Live API Documentation (Render)](https://nasa-neo-dashboard-u0qn.onrender.com/docs)**
+
 All backend endpoints are prefixed with `/api`.
 
 ### 1. GET `/health`
